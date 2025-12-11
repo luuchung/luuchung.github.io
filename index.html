@@ -1,11 +1,512 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My GitHub Page</title>
-  </head>
-  <body>
-    <h1>Hello! 🚀</h1>
-    <p>This is my first GitHub Pages website.</p>
-  </body>
-</html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name – Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --bg-softer: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background-color: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .hero-main {
+      background: linear-gradient(135deg, #020617, #020617 50%, #0b1120);
+      border-radius: var(--radius-xl);
+      padding: 26px 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .hero-pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #fbbf24 0, #f97316 40%, #b45309 100%);
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin: 6px 0 10px;
+    }
+
+    h1 span {
+      background: linear-gradient(to right, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      max-width: 34rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        background-color 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120;
+      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.35);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-ghost {
+      border-color: var(--border);
+      background-color: rgba(15, 23, 42, 0.7);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background-color: rgba(15, 23, 42, 0.95);
+      border-color: var(--accent);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .hero-dots {
+      display: inline-flex;
+      gap: 4px;
+    }
+
+    .hero-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .metrics {
+      display: flex;
+      gap: 18px;
+      font-size: 0.8rem;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .sections {
+      display: grid;
+      gap: 26px;
+    }
+
+    section {
+      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.9);
+    }
+
+    section h2 {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    section h2 span {
+      color: var(--accent);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.19em;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background-color: rgba(15, 23, 42, 0.8);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .project {
+      border-radius: 14px;
+      padding: 11px 11px 12px;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #020617 0, #020617 60%);
+      cursor: default;
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        border-color 0.12s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.7);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .project-title {
+      font-size: 0.95rem;
+      font-weight: 550;
+      margin-bottom: 4px;
+    }
+
+    .project-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .project-links {
+      margin-top: 8px;
+      font-size: 0.8rem;
+    }
+
+    .project-links a {
+      color: var(--accent);
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-links {
+      margin-top: 12px;
+      font-size: 0.86rem;
+    }
+
+    .contact-links a {
+      margin-right: 10px;
+      color: var(--accent);
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">YOUR&nbsp;NAME</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-main">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            <span>Available for new opportunities</span>
+          </div>
+
+          <h1>Hi, I’m <span>Your Name</span>.</h1>
+
+          <p class="subtitle">
+            A short intro about you. For example: I’m a developer who enjoys
+            building clean, fast web experiences and learning new tools on the
+            way.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">View my projects →</a>
+            <a href="#contact" class="btn-ghost">Get in touch</a>
+          </div>
+
+          <div class="hero-footer">
+            <div class="hero-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span>Based in Your City · open to remote work</span>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="card">
+            <div class="card-label">Snapshot</div>
+            <p style="font-size: 0.88rem; color: var(--muted); margin-top:0;">
+              Replace this with a quick description of what you’re focusing on
+              right now — e.g. learning React, contributing to open-source, or
+              building side projects.
+            </p>
+            <div class="metrics">
+              <div class="metric">
+                <span>3+</span>
+                years coding
+              </div>
+              <div class="metric">
+                <span>10+</span>
+                projects shipped
+              </div>
+              <div class="metric">
+                <span>∞</span>
+                curiosity
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-label">Quick links</div>
+            <div class="contact-links">
+              <!-- Replace with your real links -->
+              <a href="https://github.com/YOUR_USERNAME" target="_blank"
+                >GitHub</a
+              >
+              <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+              <a href="#contact">Email</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="sections">
+        <!-- ABOUT -->
+        <section id="about">
+          <h2><span>About</span>Who I am</h2>
+          <p>
+            Write a short story about your background. Mention what sparked your
+            interest in technology or design, what you’re currently studying or
+            working on, and the kind of problems you enjoy solving.
+          </p>
+          <p>
+            Keep it friendly and human. One or two paragraphs is perfect – you
+            can always come back to update this as you grow.
+          </p>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+          <h2><span>Work</span>Selected projects</h2>
+          <p>
+            A small collection of things I’ve built. Most of them are on
+            GitHub – feel free to explore the code.
+          </p>
+
+          <div class="grid">
+            <!-- Project 1 -->
+            <article class="project">
+              <div class="project-title">Project One</div>
+              <div class="project-meta">
+                Simple description · HTML · CSS · JavaScript
+              </div>
+              <p style="font-size: 0.83rem; color: var(--muted);">
+                One or two lines about what this project does and why you built
+                it.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/YOUR_USERNAME/REPO_NAME" target="_blank"
+                  >Code on GitHub</a
+                >
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project">
+              <div class="project-title">Project Two</div>
+              <div class="project-meta">
+                React · API · Responsive UI
+              </div>
+              <p style="font-size: 0.83rem; color: var(--muted);">
+                Short description of this project. Mention any interesting tech
+                or challenges.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/YOUR_USERNAME/ANOTHER_REPO" target="_blank"
+                  >Code on GitHub</a
+                >
+              </div>
+
