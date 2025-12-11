@@ -84,7 +84,7 @@
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
       margin-bottom: 40px;
     }
 
@@ -106,6 +106,24 @@
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+    }
+
+    /* new layout inside hero-main */
+    .hero-main-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .hero-main-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-text {
+      min-width: 0;
     }
 
     .hero-pill {
@@ -215,6 +233,30 @@
       height: 5px;
       border-radius: 999px;
       background-color: rgba(148, 163, 184, 0.7);
+    }
+
+    /* profile image styling */
+    .hero-photo-wrap {
+      justify-self: center;
+    }
+
+    .hero-photo {
+      display: block;
+      width: 210px;
+      max-width: 100%;
+      border-radius: 45% / 55%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      border: 2px solid rgba(148, 163, 184, 0.35);
+      object-fit: cover;
+    }
+
+    @media (max-width: 640px) {
+      .hero-photo-wrap {
+        margin-top: 10px;
+      }
+      .hero-photo {
+        width: 190px;
+      }
     }
 
     .hero-side {
@@ -376,12 +418,10 @@
 <body>
   <div class="page">
     <header>
-      <div class="logo">Chung&nbsp;Luu</div>
+      <div class="logo">CHUNG&nbsp;LUU</div>
       <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
-        <!-- <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a> -->
       </nav>
     </header>
 
@@ -394,26 +434,31 @@
             <span>Available for new opportunities</span>
           </div>
 
-          <h1>Hi, I’m <span>Chung Luu</span>.</h1>
-          <img src="me.jpg" 
-           alt="My Photo"
-           style="width: 180px; border-radius: 50%; box-shadow: 0 10px 35px rgba(0,0,0,0.25); margin-bottom: 16px;">
+          <div class="hero-main-layout">
+            <div class="hero-text">
+              <h1>Hi, I’m <span>Chung Luu</span>.</h1>
 
+              <p class="subtitle">
+                PhD student in a joint program between UC San Diego and San Diego State University.  
+                I work on statistical signal processing and optimization for massive MIMO and wireless systems.
+              </p>
 
-          <!-- <p class="subtitle">
-            I am a PhD student in a joint PhD program between University of California, San Diego and San Diego State University. 
-          </p> -->
+              <div class="hero-actions">
+                <a href="#projects" class="btn-primary">View my projects →</a>
+              </div>
 
-          <div class="hero-actions">
-            <a href="#projects" class="btn-primary">View my projects →</a>
-            <!-- <a href="#contact" class="btn-ghost">Get in touch</a> -->
-          </div>
-
-          <div class="hero-footer">
-            <div class="hero-dots">
-              <span></span><span></span><span></span>
+              <div class="hero-footer">
+                <div class="hero-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <span>San Diego</span>
+              </div>
             </div>
-            <span>San Diego</span>
+
+            <div class="hero-photo-wrap">
+              <!-- Make sure me.jpg exists in your repo root (or update the path) -->
+              <img src="me.jpg" alt="Chung Luu" class="hero-photo">
+            </div>
           </div>
         </div>
 
@@ -421,7 +466,7 @@
           <div class="card">
             <div class="card-label">Snapshot</div>
             <p style="font-size: 0.88rem; color: var(--muted); margin-top:0;">
-              Statistical signal processing, Machine learning.
+              Statistical signal processing, wireless communications, and machine learning for modern MIMO systems.
             </p>
             <div class="metrics">
               <div class="metric">
@@ -442,13 +487,10 @@
           <div class="card">
             <div class="card-label">Quick links</div>
             <div class="contact-links">
-              <!-- Replace with your real links -->
-              <a href="https://github.com/luuchung" target="_blank"
-                >GitHub</a
-              >
+              <a href="https://github.com/luuchung" target="_blank">GitHub</a>
               <a href="https://www.linkedin.com/in/chung-luu-43868b18b/" target="_blank">LinkedIn</a>
-              <a href="luu.chung.13597@gmail.com">Email</a>
-              <a href="https://scholar.google.com/citations?user=W5DGzkwAAAAJ&hl=en">Google Scholar</a>
+              <a href="mailto:luu.chung.13597@gmail.com">Email</a>
+              <a href="https://scholar.google.com/citations?user=W5DGzkwAAAAJ&hl=en" target="_blank">Google Scholar</a>
             </div>
           </div>
         </div>
@@ -459,9 +501,11 @@
         <section id="about">
           <h2><span>About</span>Who I am</h2>
           <p>
-            I am a PhD student in a joint PhD program between University of California, San Diego and San Diego State University. 
-            Previously, I worked  as a researcher at Pukyong National University from August 2023 to June 2024. 
-            My research interests center around statistical signal processing and optimization for massive MIMO systems.
+            I am a PhD student in a joint program between the University of California, San Diego and San Diego State University. 
+            Previously, I worked as a researcher at Pukyong National University from August 2023 to June 2024.
+          </p>
+          <p>
+            My research interests center on statistical signal processing and optimization for massive MIMO systems and next-generation wireless networks.
           </p>
         </section>
 
@@ -469,62 +513,69 @@
         <section id="projects">
           <h2><span>Work</span>Selected projects</h2>
           <p>
-            A small collection of things I’ve built. Most of them are on
-            GitHub – feel free to explore the code.
+            A small collection of things I’ve built. Most of them are on GitHub – feel free to explore the code.
           </p>
 
           <div class="grid">
             <!-- Project 1 -->
             <article class="project">
-              <div class="project-title">Uncertainty-Aware Incremental Automatic Modulation Classification with Bayesian Neural Network</div>
-              <div class="project-meta">
-                IEEE Internet of Things
+              <div class="project-title">
+                Uncertainty-Aware Incremental Automatic Modulation Classification with Bayesian Neural Network
               </div>
               <div class="project-meta">
-                Modulation Classification · Bayesian · Uncertainty
+                IEEE Internet of Things Journal
+              </div>
+              <div class="project-meta">
+                Modulation classification · Bayesian methods · Uncertainty
               </div>
               <p style="font-size: 0.83rem; color: var(--muted);">
-                Proposed a novel Bayesian learning framework for uncertainty-aware incremental automatic modulation classification.
-
-                Our approach consists of 2 stages: first, optimizing the model via a cumulative loss function in a frequentist manner; second: applying Laplce approximation and variational inference to model's last layers for statistical inference.
-
-                Our proposed framework ensures robust calibration and scalability, enabling the classifier to incrementally refine its predictions with the reception of additional signal samples.
+                Proposed a Bayesian learning framework for uncertainty-aware incremental automatic modulation classification.
+                The approach first optimizes the model via a cumulative loss in a frequentist manner, then applies Laplace
+                approximation and variational inference to the final layers for statistical inference. This yields robust
+                calibration and scalability, allowing the classifier to refine its predictions as more signal samples arrive.
               </p>
               <div class="project-links">
-                <a href="https://github.com/luuchung/Bayes_AMC" target="_blank"
-                  >Code</a
-                >
+                <a href="https://github.com/luuchung/Bayes_AMC" target="_blank">Code</a>
                 &middot;
-                <a href="https://ieeexplore.ieee.org/document/10502260" target="_blank">
-                Read My Paper
-                </a>
-                
+                <a href="https://ieeexplore.ieee.org/document/10502260" target="_blank">Read my paper</a>
               </div>
             </article>
 
             <!-- Project 2 -->
             <article class="project">
-              <div class="project-title">GNN-based meta-learning approach for adaptive power control in dynamic D2D communications</div>
+              <div class="project-title">
+                GNN-based Meta-Learning for Adaptive Power Control in Dynamic D2D Communications
+              </div>
               <div class="project-meta">
                 IEEE Transactions on Vehicular Technology
               </div>
               <div class="project-meta">
-                Meta-learning · GNN · Power Control
+                Meta-learning · Graph neural networks · Power control
               </div>
               <p style="font-size: 0.83rem; color: var(--muted);">
-                This work presents an initial investigation into environment-adaptive power control for dynamic D2D communications where network size, rate requirements, and deployment area unpredictably change over time.
-
-                To overcome the adaptability and scalability challenges encountered in conventional deep learning-based power control methods when dealing with rate requirements, we proposed a novel power control method that combines graph neural network (GNN) and meta-learning technique.
-
-                Developed method outperforms the conventional GNN-based power control methods in terms of the average sum-throughput achievement ratio and adaptation speed to test environments.
+                Designed an environment-adaptive power control method for dynamic D2D networks where network size, rate
+                requirements, and deployment area change over time. By combining graph neural networks with meta-learning,
+                the method improves both scalability and adaptation speed compared with conventional GNN-based power
+                control, achieving higher average sum-throughput and faster convergence in new environments.
               </p>
               <div class="project-links">
-                <a href="https://github.com/luuchung/Meta_learning_GNN_for_Power_Control" target="_blank"
-                  >Code</a
-                >
+                <a href="https://github.com/luuchung/Meta_learning_GNN_for_Power_Control" target="_blank">Code</a>
                 &middot;
-                <a href="https://ieeexplore.ieee.org/document/10319409" target="_blank">
-                Read My Paper
-                </a>
+                <a href="https://ieeexplore.ieee.org/document/10319409" target="_blank">Read my paper</a>
               </div>
+            </article>
+          </div>
+        </section>
+      </div>
 
+      <footer>
+        © <span id="year"></span> Chung Luu · Built with GitHub Pages
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
