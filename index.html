@@ -7,17 +7,23 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --bg-softer: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
+      /* LIGHT THEME COLORS */
+      --bg: #f7f9fc;                 /* main background */
+      --bg-soft: #ffffff;            /* card background */
+      --bg-softer: #eef3fb;          /* subtle panels */
+
+      --accent: #0a66c2;             /* primary accent: LinkedIn blue */
+      --accent-soft: rgba(10, 102, 194, 0.12);
+
+      --text: #111827;               /* main text (near-black) */
+      --muted: #4b5563;              /* softer gray for body text */
+
+      --border: rgba(15, 23, 42, 0.12);
+
       --radius-lg: 18px;
       --radius-xl: 26px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
+
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.08);
       --max-width: 960px;
     }
 
@@ -29,7 +35,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      background: linear-gradient(to bottom, #ffffff, #f2f6fc);
       color: var(--text);
       min-height: 100vh;
     }
@@ -58,7 +64,7 @@
       letter-spacing: 0.08em;
       font-size: 0.95rem;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #6b7280;
     }
 
     nav {
@@ -71,13 +77,13 @@
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid transparent;
-      color: var(--muted);
+      color: #6b7280;
     }
 
     nav a:hover {
       border-color: var(--accent);
-      color: var(--text);
-      background-color: rgba(15, 23, 42, 0.8);
+      color: var(--accent);
+      background-color: rgba(10, 102, 194, 0.06);
     }
 
     .hero {
@@ -99,7 +105,7 @@
     }
 
     .hero-main {
-      background: linear-gradient(135deg, #020617, #020617 50%, #0b1120);
+      background: linear-gradient(135deg, #ffffff, #f3f6fc);
       border-radius: var(--radius-xl);
       padding: 26px 24px;
       border: 1px solid var(--border);
@@ -129,10 +135,10 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 9px;
+      padding: 4px 10px;
       border-radius: 999px;
       background-color: var(--accent-soft);
-      border: 1px solid rgba(56, 189, 248, 0.5);
+      border: 1px solid rgba(10, 102, 194, 0.35);
       font-size: 0.75rem;
       color: var(--accent);
       margin-bottom: 10px;
@@ -142,8 +148,8 @@
       width: 7px;
       height: 7px;
       border-radius: 999px;
-      background: radial-gradient(circle, #fbbf24 0, #f97316 40%, #b45309 100%);
-      box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);
+      background: radial-gradient(circle, #f97316 0, #ea580c 40%, #b45309 100%);
+      box-shadow: 0 0 8px rgba(249, 115, 22, 0.7);
     }
 
     h1 {
@@ -152,7 +158,7 @@
     }
 
     h1 span {
-      background: linear-gradient(to right, #38bdf8, #22c55e);
+      background: linear-gradient(to right, #0f766e, #0ea5e9);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -188,28 +194,15 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: #0b1120;
-      box-shadow: 0 14px 35px rgba(56, 189, 248, 0.35);
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      color: #ffffff;
+      box-shadow: 0 10px 24px rgba(14, 165, 233, 0.35);
       font-weight: 600;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(56, 189, 248, 0.5);
-    }
-
-    .btn-ghost {
-      border-color: var(--border);
-      background-color: rgba(15, 23, 42, 0.7);
-      color: var(--muted);
-    }
-
-    .btn-ghost:hover {
-      background-color: rgba(15, 23, 42, 0.95);
-      border-color: var(--accent);
-      color: var(--text);
-      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(14, 165, 233, 0.45);
     }
 
     .hero-footer {
@@ -218,7 +211,7 @@
       gap: 12px;
       align-items: center;
       font-size: 0.8rem;
-      color: var(--muted);
+      color: #6b7280;
       margin-top: 6px;
     }
 
@@ -231,7 +224,7 @@
       width: 5px;
       height: 5px;
       border-radius: 999px;
-      background-color: rgba(148, 163, 184, 0.7);
+      background-color: #9ca3af;
     }
 
     /* profile image + icons */
@@ -245,10 +238,11 @@
       width: 210px;
       max-width: 100%;
       border-radius: 45% / 55%;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      border: 2px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+      border: 2px solid rgba(148, 163, 184, 0.4);
       object-fit: cover;
       margin: 0 auto;
+      background-color: #e5e7eb;
     }
 
     @media (max-width: 640px) {
@@ -271,8 +265,8 @@
       width: 36px;
       height: 36px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background-color: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background-color: #f3f4f6;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -282,9 +276,9 @@
 
     .icon-link:hover {
       border-color: var(--accent);
-      background-color: #020617;
+      background-color: #e5f0ff;
       transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.9);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
     }
 
     .icon-link svg {
@@ -298,11 +292,11 @@
     }
 
     .card {
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      background: linear-gradient(to bottom right, #ffffff, #f6f8ff);
       border-radius: var(--radius-lg);
       padding: 16px 16px 14px;
       border: 1px solid var(--border);
-      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.75);
+      box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
@@ -311,7 +305,7 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--muted);
+      color: #9ca3af;
       margin-bottom: 6px;
     }
 
@@ -334,11 +328,11 @@
     }
 
     section {
-      background: radial-gradient(circle at top left, #020617 0, #020617 55%);
+      background: var(--bg-soft);
       border-radius: var(--radius-lg);
       padding: 18px 18px 20px;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.9);
+      box-shadow: var(--shadow-soft);
     }
 
     section h2 {
@@ -362,22 +356,6 @@
       line-height: 1.6;
     }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background-color: rgba(15, 23, 42, 0.8);
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -389,7 +367,7 @@
       border-radius: 14px;
       padding: 11px 11px 12px;
       border: 1px solid var(--border);
-      background: radial-gradient(circle at top left, #020617 0, #020617 60%);
+      background: #ffffff;
       cursor: default;
       transition: transform 0.12s ease, box-shadow 0.12s ease,
         border-color 0.12s ease;
@@ -397,19 +375,20 @@
 
     .project:hover {
       transform: translateY(-2px);
-      border-color: rgba(56, 189, 248, 0.7);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(10, 102, 194, 0.5);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
     }
 
     .project-title {
       font-size: 0.95rem;
       font-weight: 550;
       margin-bottom: 4px;
+      color: #111827;
     }
 
     .project-meta {
       font-size: 0.75rem;
-      color: var(--muted);
+      color: #6b7280;
       margin-bottom: 6px;
     }
 
@@ -429,7 +408,7 @@
     footer {
       margin-top: 26px;
       font-size: 0.75rem;
-      color: var(--muted);
+      color: #9ca3af;
       text-align: center;
     }
   </style>
@@ -475,14 +454,15 @@
             </div>
 
             <div class="hero-photo-wrap">
+              <!-- Ensure me.jpg exists in your repo root (or update the path) -->
               <img src="me.jpg" alt="Chung Luu" class="hero-photo">
 
-              <!-- ICON ROW UNDER PHOTO -->
+              <!-- Social icons under photo -->
               <div class="contact-icons">
-                <!-- GitHub: white -->
+                <!-- GitHub -->
                 <a href="https://github.com/luuchung" target="_blank" class="icon-link" aria-label="GitHub">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="#ffffff"
+                    <path fill="#181717"
                       d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.86 3.16 8.98 7.55 10.43.55.1.75-.24.75-.53
                       0-.26-.01-1.12-.02-2.03-3.07.67-3.72-1.32-3.72-1.32-.5-1.27-1.22-1.61-1.22-1.61-.99-.68.08-.66.08-.66
                       1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.57 1.19 3.2.9.1-.71.38-1.19.69-1.46-2.45-.28-5.02-1.23-5.02-5.5
@@ -493,7 +473,7 @@
                   </svg>
                 </a>
 
-                <!-- LinkedIn: brand blue -->
+                <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/chung-luu-43868b18b/" target="_blank" class="icon-link" aria-label="LinkedIn">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path fill="#0A66C2"
@@ -503,16 +483,16 @@
                   </svg>
                 </a>
 
-                <!-- Email: white envelope -->
+                <!-- Email -->
                 <a href="mailto:luu.chung.13597@gmail.com" class="icon-link" aria-label="Email">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="#ffffff"
+                    <path fill="#1D4ED8"
                       d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm0 2v.2l8 5.3
                       8-5.3V6H4Zm16 2.9-7.55 5.01a1.5 1.5 0 0 1-1.9 0L3 8.9V18h17V8.9Z" />
                   </svg>
                 </a>
 
-                <!-- Google Scholar: blue -->
+                <!-- Google Scholar (blue) -->
                 <a href="https://scholar.google.com/citations?user=W5DGzkwAAAAJ&hl=en" target="_blank"
                    class="icon-link" aria-label="Google Scholar">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
